@@ -13,7 +13,7 @@ const {name, slots} = service;
                 }</p>
             <p>{slots.length} {slots.length > 1 ? 'spaces' : 'space'} available</p>
             <div class="card-actions justify-end">
-            <button class="btn btn-primary">Buy Now</button>
+            <button disabled={slots.length === 0} class="btn btn-primary">Book Appointment</button>
             </div>
         </div>
         </div>
