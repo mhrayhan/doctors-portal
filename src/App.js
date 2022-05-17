@@ -5,6 +5,7 @@ import Appointment from './Pages/Appintment/Appointment';
 import ContactUs from './Pages/Home/ContactUs';
 import Home from './Pages/Home/Home';
 import Login from './Pages/Login/Login';
+import SignUp from './Pages/Login/SignUp';
 import Navbar from './Pages/Shared/Navbar';
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
         <Route path='/appointment' element={<Appointment></Appointment>}></Route>
         <Route path='/contactus' element={<ContactUs></ContactUs>}></Route>
         <Route path='/login' element={<Login></Login>}></Route>
+        <Route path='/signup' element={<SignUp></SignUp>}></Route>
       </Routes>
     </div>
   );
