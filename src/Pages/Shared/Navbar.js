@@ -20,7 +20,7 @@ const Navbar = () => {
         <li><Link to='/review'>Reviews</Link></li>
         <li><Link to='/contactus'>Contact Us</Link></li>
         <li><span className='uppercase'>{user?.displayName}</span></li>
-        { user ? <button onClick={logout} className='btn btn-ghost'>Sign Out</button> : <Link to='/login'>Log in</Link>}
+        <li>{ user ? <button onClick={logout} className='btn btn-ghost'>Sign Out</button> : <Link to='/login'>Log in</Link>}</li>
   </>
     return (
         <div className="navbar bg-base-100">
