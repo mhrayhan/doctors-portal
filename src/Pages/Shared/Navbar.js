@@ -10,6 +10,7 @@ const Navbar = () => {
   const navigate = useNavigate();
   const logout = () => {
     signOut(auth);
+    localStorage.removeItem('accessToken');
     navigate('/login')
   };
 
@@ -22,7 +23,7 @@ const Navbar = () => {
     {
       user && <li><Link to='/dashboard'>Dashboard</Link></li>
     }
-    <li><span className='uppercase'>{user?.displayName}</span></li>
+    <li><span className='capitalize'>{user?.displayName}</span></li>
     <li>{user ? <button onClick={logout} className='btn btn-ghost'>Sign Out</button> : <Link to='/login'>Log in</Link>}</li>
   </>
   return (
