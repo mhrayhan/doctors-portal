@@ -4,7 +4,7 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import Swal from 'sweetalert2'
 
-const BookingModal = ({treatment, date, setTreatment}) => {
+const BookingModal = ({treatment, date, setTreatment, refetch}) => {
     const [user] = useAuthState(auth);
     const {_id, name, slots} = treatment;
     const formattedDate = format(date, 'PP');
@@ -33,6 +33,7 @@ const BookingModal = ({treatment, date, setTreatment}) => {
         .then(res => res.json())
         .then(data => {
             // console.log(data);
+            refetch();
             setTreatment(null)
             if(data.success) {
                      Swal.fire(
