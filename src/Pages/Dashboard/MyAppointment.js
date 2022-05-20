@@ -30,7 +30,7 @@ const MyAppointment = () => {
           setAppointments(data)
         })
     }
-  }, [user])
+  }, [navigate, user])
 
   return (
     <div className='mt-8'>
