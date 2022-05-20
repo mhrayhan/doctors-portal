@@ -1,3 +1,4 @@
+import { signOut } from 'firebase/auth';
 import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useNavigate } from 'react-router-dom';
@@ -19,7 +20,8 @@ const MyAppointment = () => {
         .then(res => {
           console.log('res', res);
           if (res.status === 401 || res.status === 403) {
-            //navigate to home
+            signOut(auth);
+            localStorage.removeItem('accessToken');
             navigate('/home');
           }
           return res.json()
@@ -29,9 +31,9 @@ const MyAppointment = () => {
         })
     }
   }, [user])
+
   return (
-    <div>
-      <h2>My Appointment {appointments.length}</h2>
+    <div className='mt-8'>
       <div class="overflow-x-auto">
         <table class="table w-full">
           <thead>
@@ -62,3 +64,4 @@ const MyAppointment = () => {
 };
 
 export default MyAppointment;
+

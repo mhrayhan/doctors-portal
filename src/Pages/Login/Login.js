@@ -6,9 +6,6 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import useToken from '../../hooks/useToken';
 
 const Login = () => {
-  const navigate = useNavigate();
-  let location = useLocation();
-  let from = location.state?.from?.pathname || "/";
 
   const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
   const { register, formState: { errors }, handleSubmit } = useForm();
@@ -22,6 +19,9 @@ const Login = () => {
   const [token] = useToken(user || gUser);
 
   let signinError;
+  const navigate = useNavigate();
+  let location = useLocation();
+  let from = location.state?.from?.pathname || "/";
 
   useEffect(() => {
     if (token) {
@@ -36,10 +36,11 @@ const Login = () => {
     signinError = <p className='text-red-500 text-sm'>{error?.message || gError?.message}</p>
   }
   const onSubmit = data => {
-    console.log(data);
+
     signInWithEmailAndPassword(data.email, data.password)
-    navigate(from, { replace: true });
+
   }
+
   return (
     <div className='flex h-screen justify-center items-center'>
       <div className="card w-96 mx-auto bg-base-100 shadow-xl">

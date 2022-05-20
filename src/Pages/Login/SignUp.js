@@ -46,7 +46,6 @@ const SignUp = () => {
         <div className="card-body">
           <h2 className="text-xl text-center font-bold">Sign Up</h2>
           <form onSubmit={handleSubmit(onSubmit)}>
-
             <div className="form-control w-full max-w-xs">
               <label className="label">
                 <span className="label-text">Name</span>
@@ -62,7 +61,6 @@ const SignUp = () => {
 
               <label className="label">
                 {errors.name?.type === 'required' && <span className="label-text-alt text-red-500">{errors.name.message}</span>}
-
               </label>
             </div>
             <div className="form-control w-full max-w-xs">
@@ -85,7 +83,6 @@ const SignUp = () => {
               <label className="label">
                 {errors.email?.type === 'required' && <span className="label-text-alt text-red-500">{errors.email.message}</span>}
                 {errors.email?.type === 'pattern' && <span className="label-text-alt text-red-500">{errors.email.message}</span>}
-
               </label>
             </div>
             <div className="form-control w-full max-w-xs">
@@ -108,10 +105,8 @@ const SignUp = () => {
               <label className="label">
                 {errors.password?.type === 'required' && <span className="label-text-alt text-red-500">{errors.password.message}</span>}
                 {errors.password?.type === 'minLength' && <span className="label-text-alt text-red-500">{errors.password.message}</span>}
-
               </label>
             </div>
-
 
             {signinError}
             <input className='btn w-full max-w-xs my-4 btn-outline btn-info' type="submit" value='Sign Up' />
