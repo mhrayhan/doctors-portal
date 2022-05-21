@@ -9,7 +9,7 @@ const SignUp = () => {
   const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
   const { register, formState: { errors }, handleSubmit } = useForm();
   if (gUser) {
-    console.log(gUser);
+    // console.log(gUser);
   }
   const [
     createUserWithEmailAndPassword,
@@ -36,7 +36,7 @@ const SignUp = () => {
     navigate('/appointment');
   }
   const onSubmit = async data => {
-    console.log(data);
+    // console.log(data);
     await createUserWithEmailAndPassword(data.email, data.password)
     await updateProfile({ displayName: data.name });
   }

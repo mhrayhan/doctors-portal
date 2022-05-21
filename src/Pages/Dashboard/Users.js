@@ -3,7 +3,7 @@ import { useQuery } from 'react-query';
 import UserRow from './UserRow';
 
 const Users = () => {
-  const url = 'http://localhost:5000/user'
+  const url = 'https://young-stream-80146.herokuapp.com/user'
   const { data: users, isLoading, refetch } = useQuery('users', () => fetch(url, {
     method: 'GET',
     headers: {
@@ -16,8 +16,8 @@ const Users = () => {
 
   return (
     <div className='mt-8'>
-      <div class="overflow-x-auto">
-        <table class="table w-full">
+      <div className="overflow-x-auto w-screen lg:w-full">
+        <table className="table w-full">
           <thead>
             <tr>
               <th>#</th>

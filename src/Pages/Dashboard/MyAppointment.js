@@ -1,7 +1,7 @@
 import { signOut } from 'firebase/auth';
 import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 
 const MyAppointment = () => {
@@ -11,14 +11,14 @@ const MyAppointment = () => {
 
   useEffect(() => {
     if (user) {
-      fetch(`http://localhost:5000/booking?patient=${user.email}`, {
+      fetch(`https://young-stream-80146.herokuapp.com/booking?patient=${user.email}`, {
         method: 'GET',
         headers: {
           'authorization': `Bearer ${localStorage.getItem('accessToken')}`
         }
       })
         .then(res => {
-          console.log('res', res);
+          // console.log('res', res);
           if (res.status === 401 || res.status === 403) {
             signOut(auth);
             localStorage.removeItem('accessToken');
@@ -34,8 +34,8 @@ const MyAppointment = () => {
 
   return (
     <div className='mt-8'>
-      <div class="overflow-x-auto">
-        <table class="table w-full">
+      <div className="overflow-x-auto w-screen lg:w-full">
+        <table className="table  lg:w-full">
           <thead>
             <tr>
               <th>#</th>
@@ -43,17 +43,22 @@ const MyAppointment = () => {
               <th>Date</th>
               <th>Time</th>
               <th>Treatment</th>
+              <th>Payment</th>
             </tr>
           </thead>
           <tbody>
             {
               appointments.map((a, index) =>
-                <tr>
+                <tr key={a._id}>
                   <th>{index + 1}</th>
                   <td className='capitalize'>{a.patientName}</td>
                   <td>{a.date}</td>
                   <td>{a.slot}</td>
                   <td>{a.treatment}</td>
+                  <td>
+                    {(a.price && !a.paid) && <Link to={`/dashboard/payment/${a._id}`}><button className='btn btn-xs btn-success'>Pay</button></Link>}
+                    {(a.price && !a.paid) && <span className='text-success'>paid</span>}
+                  </td>
                 </tr>)
             }
           </tbody>

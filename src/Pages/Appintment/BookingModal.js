@@ -6,7 +6,7 @@ import Swal from 'sweetalert2'
 
 const BookingModal = ({ treatment, date, setTreatment, refetch }) => {
   const [user] = useAuthState(auth);
-  const { _id, name, slots } = treatment;
+  const { _id, name, slots, price } = treatment;
   const formattedDate = format(date, 'PP');
   const handleBooking = event => {
     event.preventDefault();
@@ -18,12 +18,13 @@ const BookingModal = ({ treatment, date, setTreatment, refetch }) => {
       treatment: name,
       date: formattedDate,
       slot,
+      price,
       patient: user.email,
       patientName: user.displayName,
       phone
     }
 
-    fetch('http://localhost:5000/booking', {
+    fetch('https://young-stream-80146.herokuapp.com/booking', {
       method: 'POST',
       headers: {
         'content-type': 'application/json'

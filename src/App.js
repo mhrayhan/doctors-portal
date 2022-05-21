@@ -5,6 +5,7 @@ import Appointment from './Pages/Appintment/Appointment';
 import Dashboard from './Pages/Dashboard/Dashboard';
 import MyAppointment from './Pages/Dashboard/MyAppointment';
 import MyReview from './Pages/Dashboard/MyReview';
+import Payment from './Pages/Dashboard/Payment';
 import Users from './Pages/Dashboard/Users';
 import ContactUs from './Pages/Home/ContactUs';
 import Home from './Pages/Home/Home';
@@ -34,6 +35,7 @@ function App() {
         }>
           <Route index element={<MyAppointment></MyAppointment>}></Route>
           <Route path='myreview' element={<MyReview></MyReview>}></Route>
+          <Route path='payment/:id' element={<Payment></Payment>}></Route>
           <Route path='alluser' element={
             <RequireAdmin>
               <Users></Users>
