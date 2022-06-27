@@ -13,7 +13,7 @@ const Dashboard = () => {
       <div className="drawer-content flex flex-col items-center ">
         {/* <!-- Page content here --> */}
 
-        <h2 className='text-4xl font-bold text-primary'>Dashboard</h2>
+        <h2 className='text-4xl font-semibold text-primary'>Dashboard</h2>
         <Outlet></Outlet>
 
       </div>
@@ -23,7 +23,10 @@ const Dashboard = () => {
           {/* <!-- Sidebar content here --> */}
           <li><Link to='/dashboard'>My Appointment</Link></li>
           <li><Link to='/dashboard/myreview'>My Review</Link></li>
-          {admin && <li><Link to='/dashboard/alluser'>All Users</Link></li>}
+          {admin && <>
+            <li><Link to='/dashboard/alluser'>All Users</Link></li>
+            <li><Link to='/dashboard/addDoctor'>Add Doctor</Link></li>
+          </>}
         </ul>
       </div>
     </div>

@@ -23,7 +23,9 @@ const Navbar = () => {
     {
       user && <li><Link to='/dashboard'>Dashboard</Link></li>
     }
-    <li><span className='capitalize'>{user?.displayName}</span></li>
+    {
+      user && <li><span className='capitalize'>{user?.displayName}</span></li>
+    }
     <li>{user ? <button onClick={logout} className='btn btn-ghost'>Sign Out</button> : <Link to='/login'>Log in</Link>}</li>
   </>
   return (

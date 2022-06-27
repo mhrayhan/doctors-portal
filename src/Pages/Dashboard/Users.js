@@ -3,7 +3,7 @@ import { useQuery } from 'react-query';
 import UserRow from './UserRow';
 
 const Users = () => {
-  const url = 'https://young-stream-80146.herokuapp.com/user'
+  const url = 'http://localhost:5000/user'
   const { data: users, isLoading, refetch } = useQuery('users', () => fetch(url, {
     method: 'GET',
     headers: {
